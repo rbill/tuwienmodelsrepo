@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ASCII"?>
+<impl:Container
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:impl="http://implementation/1.0"
+    xmlns:req="http://requirements/1.0"
+    xmlns:router="http://router/1.0"
+    xmlns="http://implementation/1.0"
+    xsi:schemaLocation="http://implementation/1.0 implementation.ecore http://requirements/1.0 requirements.ecore http://router/1.0 router.ecore">
+  <devices xsi:type="impl:Server"
+      name="s1">
+    <outgoing
+        xsi:type="impl:GlassFiberCable"
+        speed="4"
+        target="//@devices.2"/>
+  </devices>
+  <devices xsi:type="impl:Server"
+      name="s2">
+    <outgoing
+        xsi:type="impl:GlassFiberCable"
+        speed="4"
+        target="//@devices.3"/>
+  </devices>
+  <devices xsi:type="impl:Router"
+      incoming="//@devices.0/@outgoing.0"
+      name="r1"
+      maxSpeed="4">
+    <outgoing
+        xsi:type="impl:CopperCable"
+        speed="2"
+        target="//@devices.4"/>
+  </devices>
+  <devices xsi:type="impl:Router"
+      incoming="//@devices.1/@outgoing.0"
+      name="r2"
+      maxSpeed="4">
+    <outgoing
+        xsi:type="impl:CopperCable"
+        speed="2"
+        target="//@devices.5"/>
+  </devices>
+  <devices xsi:type="impl:Computer"
+      incoming="//@devices.2/@outgoing.0"
+      name="pc1"/>
+  <devices xsi:type="impl:Computer"
+      incoming="//@devices.3/@outgoing.0"
+      name="pc3"/>
+</impl:Container>
